@@ -26,7 +26,7 @@ public class UserRegistrationMain {
 			System.out.println(lastName + " -\tvalidation unsuccessful..!");
 		}
 	}
-	
+
 	private void validateEmail() {
 		System.out.print("Enter your Email ID : ");
 		String emailID = sc.next();
@@ -37,7 +37,18 @@ public class UserRegistrationMain {
 			System.out.println(emailID + " -\tvalidation unsuccessful..!");
 		}
 	}
-	
+
+	private void validateMobileFormat() {
+		System.out.print("Enter your Mobile Number : ");
+		String mobileNumber = sc.nextLine();
+		if(mobileNumber.matches("^[0-9]{2}[\\s][0-9]{10}$")){
+			System.out.println(mobileNumber + " -\tvalidation success..!");
+		}
+		else {
+			System.out.println(mobileNumber + " -\tvalidation unsuccessful..!");
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to User Registration Validation Program");
 
@@ -45,5 +56,6 @@ public class UserRegistrationMain {
 		userRegistration.validateFirstName();
 		userRegistration.validateLastName();
 		userRegistration.validateEmail();
+		userRegistration.validateMobileFormat();
 	}
 }
