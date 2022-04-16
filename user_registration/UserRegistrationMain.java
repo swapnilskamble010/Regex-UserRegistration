@@ -8,44 +8,44 @@ public class UserRegistrationMain {
 	private void validateFirstName() {
 		System.out.print("Enter your First Name : ");
 		String firstName = sc.next();
-		if(firstName.matches("^[A-Z]{1}[A-Za-z]{2,}$")){
-			System.out.println(firstName + " -validation success..!");
-		}
-		else {
-			System.out.println(firstName + " -validation unsuccessful..!");
-		}
+		String firstNamePattern = "^[A-Z]{1}[A-Za-z]{2,}$";
+		validation(firstName, firstNamePattern);
 	}
 
 	private void validateLastName() {
 		System.out.print("Enter your Last Name : ");
 		String lastName = sc.next();
-		if(lastName.matches("^[A-Z]{1}[A-Za-z]{2,}$")){
-			System.out.println(lastName + " -\tvalidation success..!");
-		}
-		else {
-			System.out.println(lastName + " -\tvalidation unsuccessful..!");
-		}
+		String lastNamePattern = "^[A-Z]{1}[A-Za-z]{2,}$";
+		validation(lastName, lastNamePattern);
 	}
 
 	private void validateEmail() {
 		System.out.print("Enter your Email ID : ");
 		String emailID = sc.next();
-		if(emailID.matches("^[A-Za-z0-9]+[.(A-Za-z0-9)]*@[a-zA-Z]+[.][a-zA-Z]+[.(A-Za-z)]*$")){
-			System.out.println(emailID + " -\tvalidation success..!");
-		}
-		else {
-			System.out.println(emailID + " -\tvalidation unsuccessful..!");
-		}
+		String emailPattern = "^[A-Za-z0-9]+[.(A-Za-z0-9)]*@[a-zA-Z]+[.][a-zA-Z]+[.(A-Za-z)]*$";
+		validation(emailID, emailPattern);
 	}
 
 	private void validateMobileFormat() {
 		System.out.print("Enter your Mobile Number : ");
 		String mobileNumber = sc.nextLine();
-		if(mobileNumber.matches("^[0-9]{2}[\\s][0-9]{10}$")){
-			System.out.println(mobileNumber + " -\tvalidation success..!");
+		String mobilePattern = "^[0-9]{2}[\\s][0-9]{10}$";
+		validation(mobileNumber, mobilePattern);
+	}
+
+	private void validatePassword() {
+		System.out.print("Enter your Password : ");
+		String password = sc.nextLine();
+		String passwordPattern = "^[a-zA-Z0-9]{8,}$";
+		validation(password, passwordPattern);	
+	}
+
+	private void validation(String userInput, String pattern ) {
+		if(userInput.matches(pattern)){
+			System.out.println(userInput + " -\tvalidation success..!");
 		}
 		else {
-			System.out.println(mobileNumber + " -\tvalidation unsuccessful..!");
+			System.out.println(userInput + " -\tvalidation unsuccessful..!");
 		}
 	}
 
@@ -57,5 +57,6 @@ public class UserRegistrationMain {
 		userRegistration.validateLastName();
 		userRegistration.validateEmail();
 		userRegistration.validateMobileFormat();
+		userRegistration.validatePassword();
 	}
 }
