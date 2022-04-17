@@ -36,7 +36,7 @@ public class UserRegistrationMain {
 	private void validatePassword() {
 		System.out.print("Enter your Password : ");
 		String password = sc.nextLine();
-		String passwordPattern = "^((?=.*[A-Z])[a-z].{8,})$";  
+		String passwordPattern = "^((?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,})$";  
 		validation(password, passwordPattern);	
 	}
 
@@ -53,10 +53,10 @@ public class UserRegistrationMain {
 		System.out.println("Welcome to User Registration Validation Program");
 
 		UserRegistrationMain userRegistration = new UserRegistrationMain();
-		userRegistration.validateFirstName();
-		userRegistration.validateLastName();
-		userRegistration.validateEmail();
-		userRegistration.validateMobileFormat();
+//		userRegistration.validateFirstName();
+//		userRegistration.validateLastName();
+//		userRegistration.validateEmail();
+//		userRegistration.validateMobileFormat();
 		userRegistration.validatePassword();
 	}
 }
