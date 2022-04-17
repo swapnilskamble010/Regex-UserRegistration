@@ -53,10 +53,10 @@ public class UserRegistrationMain {
 		System.out.println("Welcome to User Registration Validation Program");
 
 		UserRegistrationMain userRegistration = new UserRegistrationMain();
-//		userRegistration.validateFirstName();
-//		userRegistration.validateLastName();
-//		userRegistration.validateEmail();
-//		userRegistration.validateMobileFormat();
+		userRegistration.validateFirstName();
+		userRegistration.validateLastName();
+		userRegistration.validateEmail();
+		userRegistration.validateMobileFormat();
 		userRegistration.validatePassword();
 	}
 }
