@@ -1,65 +1,31 @@
 package regex.user_registration;
 
-import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class UserRegistrationMain {
-	Scanner sc = new Scanner(System.in);
 
-	private void validateFirstName() {
-		System.out.print("Enter your First Name : ");
-		String firstName = sc.next();
-		String firstNamePattern = "^[A-Z]{1}[A-Za-z]{2,}$";
-		validation(firstName, firstNamePattern);
+	private static final String NAME = "^[A-Z]{1}[A-Za-z]{2,}$";
+	private static final String EMAIL = "^(abc)[.][a-z]+[@](bl)[.](co)[.][a-z]+$";
+	private static final String MOBILE_NUMBER = "^[0-9]{2}[\\s][0-9]{10}$";
+	private static final String PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=[^!@#$%^&+=]*[!@#$%^&+=][^!@#$%^&+=]*$)(?=.*[0-9]).{8,}$";
+
+	public boolean validateFirstName(String firstName) {
+		return Pattern.matches(NAME, firstName);
 	}
 
-	private void validateLastName() {
-		System.out.print("Enter your Last Name : ");
-		String lastName = sc.next();
-		String lastNamePattern = "^[A-Z]{1}[A-Za-z]{2,}$";
-		validation(lastName, lastNamePattern);
+	public boolean validateLastName(String lastName) {
+		return Pattern.matches(NAME, lastName);
 	}
 
-	private void validateEmail(String[] emailSample) {
-		for(int i = 0; i < emailSample.length; i++) {
-			String emailPattern = "^[\\w+_-]+(?:\\.[\\w+_-]+)*[@][\\w]{1,}([.]{1}[a-z]{2,}){1,2}$";
-			validation(emailSample[i], emailPattern);
-		}
+	public boolean validateEmail(String email) {
+		return Pattern.matches(EMAIL, email);
 	}
 
-	private void validateMobileFormat() {
-		System.out.print("Enter your Mobile Number : ");
-		String mobileNumber = sc.nextLine();
-		String mobilePattern = "^[0-9]{2}[\\s][0-9]{10}$";
-		validation(mobileNumber, mobilePattern);
+	public boolean validateMobileNumber(String mobileNumber) {
+		return Pattern.matches(MOBILE_NUMBER, mobileNumber);
 	}
 
-	private void validatePassword() {
-		System.out.print("Enter your Password : ");
-		String password = sc.nextLine();
-		String passwordPattern = "^(?=.*[0-9])(?=.*[@#$%^&!])(?=.*[A-Z])(?=.*[a-z]).{8,}$";  
-		validation(password, passwordPattern);	
-	}
-
-	private void validation(String userInput, String pattern ) {
-		if(userInput.matches(pattern)){
-			System.out.println("'" + userInput + "'" + " - \tvalidation success..!");
-		}
-		else {
-			System.out.println("'" + userInput + "'" + " - \tvalidation unsuccessful..!");
-		}
-	}
-
-	public static void main(String[] args) {
-		System.out.println("Welcome to User Registration Validation Program");
-		String[] validEmailSample = {"abc@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net", "abc.100@abc.com.au", "abc@1.com", "abc@gmail.com.com", "abc+100@gmail.com"};
-		String[] invalidEmailSample = {"abc", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com", "abc()*@gmail.com", "abc@%*.com", "abc..2002@gmail.com", "abc.@gmail.com", "abc@abc@gmail.com", "abc@gmail.com.1a", "abc@gmail.com.aa.au" };
-
-		UserRegistrationMain userRegistration = new UserRegistrationMain();
-		userRegistration.validateFirstName();
-		userRegistration.validateLastName();
-		userRegistration.validateEmail(validEmailSample);
-		userRegistration.validateEmail(invalidEmailSample);
-		userRegistration.validateMobileFormat();
-		userRegistration.validatePassword();
+	public boolean validatePassword(String password) {
+		return Pattern.matches(PASSWORD, password);
 	}
 }
