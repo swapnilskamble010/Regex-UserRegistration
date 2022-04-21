@@ -1,31 +1,37 @@
 package regex.user_registration;
 
-import java.util.regex.Pattern;
+import java.util.Scanner;
 
 public class UserRegistrationMain {
+	
+	public static void main(String[] args) {
+		System.out.println("Welcome message to user registration program");
+		Scanner scan = new Scanner(System.in);
+		ValidateUserRegistration validate = new ValidateUserRegistration();
 
-	private static final String NAME = "^[A-Z]{1}[A-Za-z]{2,}$";
-	private static final String EMAIL = "^(abc)[.][a-z]+[@](bl)[.](co)[.][a-z]+$";
-	private static final String MOBILE_NUMBER = "^[0-9]{2}[\\s][0-9]{10}$";
-	private static final String PASSWORD = "^(?=.*[A-Z])(?=.*[a-z])(?=[^!@#$%^&+=]*[!@#$%^&+=][^!@#$%^&+=]*$)(?=.*[0-9]).{8,}$";
+		System.out.println("Enter First name: ");
+		String firstName = scan.nextLine();
+		System.out.println(firstName);
+		validate.validateFirstName(firstName);
 
-	public boolean validateFirstName(String firstName) {
-		return Pattern.matches(NAME, firstName);
-	}
+		System.out.println("Enter Last name: ");
+		String lastName = scan.nextLine();
+		System.out.println(lastName);
+		validate.validateFirstName(lastName);
 
-	public boolean validateLastName(String lastName) {
-		return Pattern.matches(NAME, lastName);
-	}
+		System.out.println("Enter Email Id: ");
+		String emailId = scan.nextLine();
+		System.out.println(emailId);
+		validate.validateEmail(emailId);
 
-	public boolean validateEmail(String email) {
-		return Pattern.matches(EMAIL, email);
-	}
+		System.out.println("Enter mobile number: ");
+		String mobNumber = scan.nextLine();
+		System.out.println(mobNumber);
+		validate.validaeMobileNum(mobNumber);
 
-	public boolean validateMobileNumber(String mobileNumber) {
-		return Pattern.matches(MOBILE_NUMBER, mobileNumber);
-	}
-
-	public boolean validatePassword(String password) {
-		return Pattern.matches(PASSWORD, password);
+		System.out.println("Enter password minimum 8 character having at least one upper case , one numeric number and one special character: ");
+		String password = scan.nextLine();
+		System.out.println(password);
+		validate.validatePassword(password);
 	}
 }
