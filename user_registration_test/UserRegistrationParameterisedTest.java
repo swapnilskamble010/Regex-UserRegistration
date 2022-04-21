@@ -47,7 +47,12 @@ public class UserRegistrationParameterisedTest {
 	@Test
 	public void testUserRegistrationTest() throws UserRegistrationException {
 		System.out.println("This is Expected Result " + this.expectedResult);
-		boolean message = ValidateUserRegistration.validateEmail(testEmail);
+		boolean message = false;
+		try {
+			message = userRegistration.validateEmail(testEmail);
+		} catch (UserRegistrationException e) {
+			e.printStackTrace();
+		}
 		Assert.assertEquals(this.expectedResult, message);
 	}
 }
