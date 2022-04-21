@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class UserRegistrationMain {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UserRegistrationException {
 		System.out.println("Welcome message to user registration program");
 		Scanner scan = new Scanner(System.in);
 		ValidateUserRegistration validate = new ValidateUserRegistration();

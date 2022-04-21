@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import regex.user_registration.UserRegistrationException;
 import regex.user_registration.ValidateUserRegistration;
 
 @RunWith(Parameterized.class)
@@ -44,9 +45,9 @@ public class UserRegistrationParameterisedTest {
 
 
 	@Test
-	public void testUserRegistrationTest() {
+	public void testUserRegistrationTest() throws UserRegistrationException {
 		System.out.println("This is Expected Result " + this.expectedResult);
-		String message = ValidateUserRegistration.validateEmail(testEmail);
+		boolean message = ValidateUserRegistration.validateEmail(testEmail);
 		Assert.assertEquals(this.expectedResult, message);
 	}
 }
