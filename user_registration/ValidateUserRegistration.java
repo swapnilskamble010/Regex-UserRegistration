@@ -3,7 +3,8 @@ package regex.user_registration;
 import java.util.regex.Pattern;
 
 public class ValidateUserRegistration {
-	IValidateUserDetail validateUser = (userDetails,pattern)->Pattern.matches(userDetails,pattern);
+	IValidateUserDetail validateUser = (userDetails, pattern)->Pattern.matches(userDetails, pattern);
+		
 
 	public boolean validateFirstName(String firstName) throws UserRegistrationException {
 		String firstNamePattern = "^[A-Z]{1}[a-z,A-Z]{2,}";
@@ -17,16 +18,16 @@ public class ValidateUserRegistration {
 
 	public boolean validateLastName(String lastName) throws UserRegistrationException {
 		String lastNamePattern = "^[A-Z]{1}[a-z,A-Z]{2,}";
-		if (validateUser.userValidation(lastName,lastNamePattern )) { 
+		if (validateUser.userValidation(lastName, lastNamePattern )) { 
 			return true;
 		} else {
 			throw new UserRegistrationException("Enter valid lastName", UserRegistrationException.ExceptionType.INVALID_LAST_NAME);
 		}
 	}
 
-	public boolean validateEmail(String emailId) throws UserRegistrationException{
+	public boolean validateEmail(String emailId) throws UserRegistrationException {
 		String emailPattern = "^[a-zA-Z0-9]+[.(a-zA-Z0-9)]*[@]{1}[a-z]+[.]{1}[a-z]{2,4}[.]*[a-z]*{2}$";
-		if (validateUser.userValidation(emailId,emailPattern )) {
+		if (validateUser.userValidation(emailId, emailPattern)) {
 			return true;
 		} else {
 			throw new UserRegistrationException("Enter valid emailId", UserRegistrationException.ExceptionType.INVALID_EMAIL);

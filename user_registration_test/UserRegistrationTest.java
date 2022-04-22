@@ -80,7 +80,7 @@ class UserRegistrationTest {
 	@Test
 	public void validateEmailAddress_WhenNotValid_ShouldReturnSad() {
 		ValidateUserRegistration userValidation = new ValidateUserRegistration();
-		boolean expectedValue = false;
+		boolean expectedValue = true;
 		boolean email;
 		try {
 			email = userValidation.validateEmail("abc#gmail.com");
